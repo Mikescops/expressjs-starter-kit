@@ -15,7 +15,7 @@
           <div class="list-group-item-tools">
             <a href="#" title="Lock account"><i class="fas fa-lock"></i></a>
             <a href="/users/{{ user._id }}/edit" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-            <a href="#" title="Delete"><i class="far fa-trash-alt"></i></a>
+            <a href="/users/{{ user._id }}/delete" onclick="return confirm('Are you sure to delete this user?')" title="Delete"><i class="far fa-trash-alt"></i></a>
           </div>
           <div class="list-group-item-image">
             <svg width="80" height="80" data-jdenticon-value="{{ user._id }}"></svg>
