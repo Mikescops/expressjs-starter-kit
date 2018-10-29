@@ -37,7 +37,7 @@ or use Gulp automation so that any modifications to files will reload the app :
 
 `gulp`
 
-Your project is accessible at (localhost:3000)[localhost:3000].
+Your project is accessible at [localhost:3000](http://localhost:3000).
 
 
 ## About design
