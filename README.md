@@ -7,23 +7,23 @@ It uses MongoDB to store data as well as Nunjucks for templating.
 ## Project structure
 
 ```
-	|-- app.js (main script to start the app)
-	|-- package.json (metadata and dependencies)
-	|-- gulpfile.js (specify files to watch)
-	|-- models
-		|-- db.js (to connect to database)
-		|-- users.js (define users contenttype)
-	|-- controllers
-		|-- index.js (for homepage)
-		|-- users.js (for users contenttype)
-	|-- views
-		|-- users (templates for users contenttype)
-		|-- partials (templates called with 'include')
-		|-- layout (templates called with 'extends')
-		|-- something.html (any template used by Nunjucks)
-		|-- ...
-	|-- public
-		|-- assets (any css, js or img that need to be publicly accessible)
+|-- app.js (main script to start the app)
+|-- package.json (metadata and dependencies)
+|-- gulpfile.js (specify files to watch)
+|-- models
+	|-- db.js (to connect to database)
+	|-- users.js (define users contenttype)
+|-- controllers
+	|-- index.js (for homepage)
+	|-- users.js (for users contenttype)
+|-- views
+	|-- users (templates for users contenttype)
+	|-- partials (templates called with 'include')
+	|-- layout (templates called with 'extends')
+	|-- something.html (any template used by Nunjucks)
+	|-- ...
+|-- public
+	|-- assets (any css, js or img that need to be publicly accessible)
 
 ```
 
