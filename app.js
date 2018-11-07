@@ -42,6 +42,7 @@ app.use(require('./controllers'))
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
+    err.message = 'The page ' + req.hostname + req.originalUrl + ' could not be found on this website.';
     next(err);
 });
 

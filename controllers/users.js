@@ -15,7 +15,7 @@ router.route('/')
             //HTML response will render the users/index.html
             html: function(){
             	res.render('./users/list', {
-                title: 'User list',
+                title: 'Users list',
                 users: users
               });
             },
