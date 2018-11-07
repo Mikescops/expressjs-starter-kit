@@ -14,7 +14,10 @@ router.route('/')
         res.format({
             //HTML response will render the users/index.html
             html: function(){
-            	res.render('./users/list', { users: users });
+            	res.render('./users/list', {
+                title: 'User list',
+                users: users
+              });
             },
           //JSON response will show all users in JSON format
           json: function(){
@@ -69,6 +72,7 @@ router.route('/:id')
         res.format({
           html: function(){
             res.render('users/view', {
+              title: 'View of ' + user.name,
               user : user
             });
           },
@@ -94,6 +98,7 @@ router.route('/:id/edit')
             //HTML response will render the 'edit.jade' template
             html: function(){
              res.render('users/edit', {
+              title: 'Edit user #' + user._id,
               user : user
             });
            },
