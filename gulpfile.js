@@ -5,7 +5,10 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     node;
 
-const build = ['minify-css', 'minify-js', 'server'];
+const build = ['minify-css', 'minify-js', 'server'],
+      run = ['server'],
+      minifyCSS = ['minify-css'],
+      minifyJS = ['minify-js'];
 
 
 /**
@@ -28,6 +31,8 @@ gulp.task('server', function() {
  * description: start the development environment
  */
 gulp.task('default', build, function() {
+  gulp.watch(['./public/assets/css/*.css'], minifyCSS);
+  gulp.watch(['./public/assets/js/*.js'], minifyJS);
   gulp.watch(['./app.js', './**/*.js', './**/*.html'], build); 
 });
 
