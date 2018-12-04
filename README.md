@@ -38,9 +38,9 @@ Go into root folder and enter the following line in your terminal :
 
 `npm install`
 
-Install gulp : 
+Install gulp (and associated components) : 
 
-`npm install --global gulp-cli`
+`npm install --global gulp-cli gulp-rename gulp-clean-css gulp-minify`
 
 
 ## Launch project
@@ -49,7 +49,7 @@ You may start the project with
 
 `node app`
 
-or use Gulp automation so that any modifications to files will reload the app :
+or use Gulp automation so that any modifications to files will reload the app and minify assets :
 
 `gulp`
 
