@@ -8,16 +8,16 @@ var express = require('express'),
 	bodyParser = require('body-parser');
 
 
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-// Load DB
+// Load DB connection
 var db = require('./models/db');
 
+// Load user DB
 var users = require('./models/users');
 
 // Load templating and statics
@@ -50,9 +50,9 @@ app.listen(port, function() {
 })
 
 
-// Error handlers
+/*** Error handlers ***/
 
-// development error handler
+// Development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
@@ -65,7 +65,7 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
+// Production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);

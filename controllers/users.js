@@ -2,7 +2,7 @@ var express = require('express'),
 	mongoose = require('mongoose');
 
 exports.indexUser = function(req, res, next) {
-	//retrieve all users from Monogo
+	// Retrieve all users from Mongo
 	mongoose.model('Users').find({}, function(err, users) {
 		if (err) {
 			return next(err);
@@ -80,7 +80,7 @@ exports.getUser = function(req, res, next) {
 }
 
 exports.editUser = function(req, res) {
-	//search for the user within Mongo
+	// Search for the user within Mongo
 	mongoose.model('Users').findById(req.params.id, function(err, user) {
 		if (err) {
 			console.log('GET Error: There was a problem retrieving: ' + err);
@@ -133,7 +133,7 @@ exports.updateUser = function(req, res) {
 }
 
 exports.deleteUser = function(req, res, next) {
-	//find user by ID
+	// Find user to delete by ID
 	mongoose.model('Users').findById(req.params.id, function(err, user) {
 		if (err) {
 			return next(err);

@@ -3,10 +3,10 @@ var express = require('express'),
 	indexController = require('../controllers');
 
 
-router.route('/')
-    .get(indexController.dashboard);
+	router.route('/')
+		.get(indexController.dashboard);
 
-router.use('/users', require('./users'));
+	router.use('/users', require('./users'));
 
 
 module.exports = router
