@@ -3,9 +3,16 @@ const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
 const userSchema = new Schema({
-  _id: ObjectId,
-  name: String,
-  email: String
+	_id: ObjectId,
+	name: {
+		type: String,
+		required: true
+	},
+	email: { 
+		type: String,
+		required: true,
+		unique: true
+	}
 });
 
-mongoose.model('Users', userSchema);
+module.exports = mongoose.model('Users', userSchema);
