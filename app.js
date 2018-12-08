@@ -15,11 +15,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-
 // Load DB
 var db = require('./models/db');
 
-var personnages = require('./models/users');
+var users = require('./models/users');
 
 // Load templating and statics
 app.use(express.static(path.join(__dirname, 'public')));
@@ -31,7 +30,6 @@ nunjucks.configure('views', {
 });
 
 app.set('view engine', 'html');
-
 
 
 // Call controllers
