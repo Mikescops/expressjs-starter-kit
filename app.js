@@ -32,8 +32,8 @@ nunjucks.configure('views', {
 app.set('view engine', 'html');
 
 
-// Call controllers
-app.use(require('./controllers'))
+// Call routes
+app.use(require('./routes'))
 
 
 // catch 404 and forward to error handler
@@ -50,7 +50,7 @@ app.listen(port, function() {
 })
 
 
-// error handlers
+// Error handlers
 
 // development error handler
 // will print stacktrace
