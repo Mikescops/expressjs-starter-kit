@@ -13,9 +13,12 @@ It uses MongoDB to store data as well as Nunjucks for templating.
 |-- models
 	|-- db.js (to connect to database)
 	|-- users.js (define users contenttype)
+|-- routes
+	|-- index.js (define route to homepage)
+	|-- users.js (define routes to users pages)
 |-- controllers
-	|-- index.js (for homepage)
-	|-- users.js (for users contenttype)
+	|-- index.js (handle response for homepage)
+	|-- users.js (handle response for users contenttype)
 |-- views
 	|-- users (templates for users contenttype)
 	|-- partials (templates called with 'include')
@@ -24,13 +27,12 @@ It uses MongoDB to store data as well as Nunjucks for templating.
 	|-- ...
 |-- public
 	|-- assets (any css, js or img that need to be publicly accessible)
-
 ```
 
 
 ## Installation
 
-You must have nodejs and mongodb installed on your system, verify with :
+You must have **nodejs and mongodb** installed on your system, verify with :
 
 `node --version && mongo --version`
 
@@ -41,6 +43,12 @@ Go into root folder and enter the following line in your terminal :
 Install gulp (and associated components) : 
 
 `npm install --global gulp-cli gulp-rename gulp-clean-css gulp-minify`
+
+If you have an error when starting `gulp`, you may have to link it to your project :
+
+`npm link gulp`
+
+Do the previous command for each gulp addons.
 
 
 ## Launch project
