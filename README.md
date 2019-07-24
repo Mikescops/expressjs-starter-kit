@@ -3,7 +3,6 @@
 This project suggest a MVC (model - view - controller) architecture for an ExpressJS project.
 It uses MongoDB to store data as well as Nunjucks for templating.
 
-
 ## Project structure
 
 ```
@@ -29,7 +28,6 @@ It uses MongoDB to store data as well as Nunjucks for templating.
 	|-- assets (any css, js or img that need to be publicly accessible)
 ```
 
-
 ## Installation
 
 You must have **nodejs and mongodb** installed on your system, verify with :
@@ -40,34 +38,25 @@ Go into root folder and enter the following line in your terminal :
 
 `npm install`
 
-Install gulp (and associated components) : 
-
-`npm install --global gulp-cli gulp-rename gulp-clean-css gulp-minify`
-
-If you have an error when starting `gulp`, you may have to link it to your project :
-
-`npm link gulp`
-
-Do the previous command for each gulp addons.
-
-
 ## Launch project
 
-You may start the project with
+You can build assets with
 
-`node app`
+`npm run assets:build`
 
-or use Gulp automation so that any modifications to files will reload the app and minify assets :
+then you may start the project with
 
-`gulp`
+`npm run start`
+
+or use Gulp automation so that any modifications to files will minify assets and reload the app :
+
+`npm run assets:watch`
 
 Your project is accessible at [localhost:3000](http://localhost:3000).
-
 
 ## About design
 
 The administrative panel template is from [Ad.min](https://github.com/Mikescops/ad.min) which is a minimal admin template.
-
 
 ## Various documentation
 
@@ -78,15 +67,13 @@ The administrative panel template is from [Ad.min](https://github.com/Mikescops/
 - FontAwesome (icons font) : https://fontawesome.com/icons
 - Kacole2's skeleton (inspiration of this project) : https://git.io/fxQXK
 
-
 ## Contributing
 
 Feel free to contribute to this project, fork and pull request your ideas.
 Don't include work that is not open source or not from you.
 
-
 ## Authors
 
-| [![twitter/mikescops](https://avatars0.githubusercontent.com/u/4266283?s=100&v=4)](http://twitter.com/mikescops "Follow @mikescops on Twitter") |                                
-|---|                                                                                                                                                                              
-| [Corentin Mors](https://pixelswap.fr/) |      
+| [![twitter/mikescops](https://avatars0.githubusercontent.com/u/4266283?s=100&v=4)](http://twitter.com/mikescops "Follow @mikescops on Twitter") |
+| ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Corentin Mors](https://pixelswap.fr/)                                                                                                          |

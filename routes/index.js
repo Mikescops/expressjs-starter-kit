@@ -1,12 +1,10 @@
-var express = require('express'),
+const express = require('express'),
 	router = express.Router(),
 	indexController = require('../controllers');
 
+router.route('/')
+	.get(indexController.dashboard);
 
-	router.route('/')
-		.get(indexController.dashboard);
+router.use('/users', require('./users'));
 
-	router.use('/users', require('./users'));
-
-
-module.exports = router
+module.exports = router;

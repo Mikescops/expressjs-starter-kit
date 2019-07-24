@@ -3,26 +3,27 @@
 {% block content %}
 <main role="main" class="container-fluid">
 
-  <div class="row">
-    <div class="col-sm">
-      <div class="contenttype-title">
-        <h3>Users</h3>
-      </div>
-      <div class="list-group">
-        {% for user in users %}       
-          <a href="users/{{ user._id }}" class="list-group-item list-group-item-action">{{user.name}}</a>
-        {% endfor %}
+	<div class="row">
+		<div class="col-sm">
+			<div class="contenttype-title">
+				<h3>Users</h3>
+			</div>
+			<div class="list-group">
+				{% for user in users %}
+				<a href="/users/{{ user._id }}" class="list-group-item list-group-item-action">{{user.name}}</a>
+				{% endfor %}
 
-      </div>
-      <a href="/users" class="contenttype-all-button float-right">View all users <i class="fas fa-chevron-circle-right"></i></a>
-    </div>
-    <div class="col-sm">
-      <!-- Future contenttype -->
-    </div>
-    <div class="col-sm">
-      <!-- Future contenttype -->
-    </div>
-  </div>
+			</div>
+			<a href="/users" class="contenttype-all-button float-right">View all users <i
+					class="fas fa-chevron-circle-right"></i></a>
+		</div>
+		<div class="col-sm">
+			<!-- Future contenttype -->
+		</div>
+		<div class="col-sm">
+			<!-- Future contenttype -->
+		</div>
+	</div>
 
 </main><!-- /.container -->
 

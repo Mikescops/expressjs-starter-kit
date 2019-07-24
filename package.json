@@ -19,6 +19,7 @@
     "gulp-rename": "^1.4.0"
   },
   "scripts": {
+    "start": "node app",
     "assets:watch": "gulp",
     "assets:build": "gulp build",
     "assets:build:js": "gulp minify-js",
