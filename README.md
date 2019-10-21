@@ -1,5 +1,7 @@
 # ExpressJS Starter Kit
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/56aeba074ae7160d4c9a/maintainability)](https://codeclimate.com/github/Mikescops/expressjs-starter-kit/maintainability)
+
 This project suggest a MVC (model - view - controller) architecture for an ExpressJS project.
 It uses MongoDB to store data as well as Nunjucks for templating.
 
