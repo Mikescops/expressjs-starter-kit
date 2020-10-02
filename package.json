@@ -2,27 +2,27 @@
   "name": "expressjs-starter-kit",
   "version": "0.0.1",
   "description": "A starter kit to kickstart your expressjs projects.",
-  "dependencies": {
-    "body-parser": "^1.10.2",
-    "cookie-parser": "~1.3.3",
-    "debug": "^4.1.0",
-    "express": "^4.16.4",
-    "mongoose": "^5.3.15",
-    "morgan": "^1.9.1",
-    "nunjucks": "^3.1.4",
-    "serve-favicon": "^2.5.0"
-  },
-  "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-clean-css": "^4.2.0",
-    "gulp-minify": "^3.1.0",
-    "gulp-rename": "^1.4.0"
-  },
   "scripts": {
     "start": "node app",
     "assets:watch": "gulp",
     "assets:build": "gulp build",
     "assets:build:js": "gulp minify-js",
     "assets:build:css": "gulp minify-css"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.5",
+    "debug": "^4.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.7",
+    "morgan": "^1.10.0",
+    "nunjucks": "^3.2.2",
+    "serve-favicon": "^2.5.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-rename": "^2.0.0"
   }
 }
