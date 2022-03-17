@@ -38,7 +38,7 @@ You must have **nodejs and mongodb** installed on your system, verify with :
 
 Go into root folder and enter the following line in your terminal :
 
-`npm install`
+`npm ci` to install node dependencies.
 
 ## Launch project
 
@@ -62,12 +62,12 @@ The administrative panel template is from [Ad.min](https://github.com/Mikescops/
 
 ## Various documentation
 
-- ExpressJS : https://expressjs.com/en/starter/hello-world.html
-- Mongoose (mongodb object modeling for nodejs) : https://mongoosejs.com/docs/
-- Nunjucks (mozilla templating for nodejs) : https://mozilla.github.io/nunjucks/templating.html
-- GulpJS (development automation) : https://gulpjs.com/
-- FontAwesome (icons font) : https://fontawesome.com/icons
-- Kacole2's skeleton (inspiration of this project) : https://git.io/fxQXK
+-   ExpressJS : https://expressjs.com/en/starter/hello-world.html
+-   Mongoose (mongodb object modeling for nodejs) : https://mongoosejs.com/docs/
+-   Nunjucks (mozilla templating for nodejs) : https://mozilla.github.io/nunjucks/templating.html
+-   GulpJS (development automation) : https://gulpjs.com/
+-   FontAwesome (icons font) : https://fontawesome.com/icons
+-   Kacole2's skeleton (inspiration of this project) : https://git.io/fxQXK
 
 ## Contributing
 
@@ -76,6 +76,6 @@ Don't include work that is not open source or not from you.
 
 ## Authors
 
-| [![twitter/mikescops](https://avatars0.githubusercontent.com/u/4266283?s=100&v=4)](http://twitter.com/mikescops "Follow @mikescops on Twitter") |
+| [![twitter/mikescops](https://avatars0.githubusercontent.com/u/4266283?s=100&v=4)](http://twitter.com/mikescops 'Follow @mikescops on Twitter') |
 | ----------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Corentin Mors](https://pixelswap.fr/)                                                                                                          |

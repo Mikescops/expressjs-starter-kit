@@ -1,2 +1,5 @@
+.vscode
 node_modules/
-package-lock.json
+
+# We don't ignore package-lock.json so that we can use "npm ci" to install the exact same dependencies
+# package-lock.json

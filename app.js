@@ -2,73 +2,73 @@ const express = require('express'),
     app = express(),
     port = process.env.PORT || 3000,
     path = require('path'),
-    favicon = require('serve-favicon'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    nunjucks = require('nunjucks');
 
+// we use the morgan middleware to log the HTTP requests we receive
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
+// we use body-parser middleware to parse the body of HTTP requests (req.body)
+app.use(bodyParser.json()); // parse application/json
+app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
+
+// we use cookie-parser moddleware to be able to read and parse Cookies header (req.cookies)
 app.use(cookieParser());
-
-// Load DB connection
-const db = require('./models/db');
-
-// Load user DB
-const users = require('./models/users');
 
 // Load templating and statics
 app.use(express.static(path.join(__dirname, 'public')));
 
-const nunjucks = require('nunjucks');
+// Configure Nunjucks templating
 nunjucks.configure('views', {
-    autoescape: true,
+    autoescape: true, // will ensure template variable are safe from malicious injections
     express: app
 });
-
 app.set('view engine', 'html');
 
+// load DB connection
+const db = require('./models/db');
+// load user DB
+const users = require('./models/users');
 
-// Call routes
-app.use(require('./routes'))
+// routes middleware
+app.use(require('./routes'));
 
-// catch 404 and forward to error handler
+// simple middleware to catch all non routed pages as 404 and forward to the error middleware
 app.use((req, _res, next) => {
-    const err = new Error('Not Found');
-    err.status = 404;
-    err.message = 'The page ' + req.hostname + req.originalUrl + ' could not be found on this website.';
-    next(err);
+    const error = new Error('Not Found');
+    error.status = 404;
+    error.message = 'The page ' + req.hostname + req.originalUrl + ' could not be found on this website.';
+    next(error);
 });
 
-app.listen(port, () => {
-    console.log('Listening on port ' + port)
-})
+/*** Error middlewares ***/
 
-/*** Error handlers ***/
-
-// Development error handler
+// Development error middleware
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use((err, _req, res, _next) => {
-        res.status(err.status || 500);
+    app.use((error, _req, res, _next) => {
+        res.status(error.status || 500);
         res.render('error', {
-            title: 'Error ' + err.status,
-            message: err.message,
-            error: err
+            title: 'Error ' + error.status,
+            message: error.message,
+            error: error
         });
     });
 }
 
-// Production error handler
+// Production error middleware
 // no stacktraces leaked to user
-app.use((err, _req, res, _next) => {
-    res.status(err.status || 500);
+app.use((error, _req, res, _next) => {
+    res.status(error.status || 500);
     res.render('error', {
-        title: 'Error ' + err.status,
-        message: err.message,
+        title: 'Error ' + error.status,
+        message: error.message,
         error: {}
     });
 });
 
-module.exports = app;
+app.listen(port, () => {
+    console.log('Listening at address http://localhost:' + port);
+});

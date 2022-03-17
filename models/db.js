@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-mongoose.set('useCreateIndex', true); // This pervent collection.ensureIndex depreciation warning
-mongoose.set('useFindAndModify', false); // This prevent current mongoose depreciation warning
+// In this file we setup the connection to the database
+
 mongoose.connect('mongodb://localhost/starterkit', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });

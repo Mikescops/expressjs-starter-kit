@@ -1,34 +1,39 @@
-{% extends "layout/base.html" %}
-
-{% block content %}
+{% extends "layout/base.html" %} {% block content %}
 <main role="main" class="container">
+    <h2>Edit user #{{ user._id }}</h2>
 
-	<h2>Edit user #{{ user._id }}</h2>
+    <hr />
 
-	<hr>
+    <form action="" method="POST">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="input-name">Name</span>
+            </div>
+            <input
+                type="text"
+                name="name"
+                class="form-control"
+                placeholder="{{ user.name }}"
+                value="{{ user.name }}"
+                aria-label="Name"
+            />
+        </div>
 
-	<form action="" method="POST">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="input-title">Email</span>
+            </div>
+            <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="{{ user.email }}"
+                value="{{ user.email }}"
+                aria-label="Email"
+            />
+        </div>
 
-		<div class="input-group mb-3">
-			<div class="input-group-prepend">
-				<span class="input-group-text" id="input-name">Name</span>
-			</div>
-			<input type="text" name="name" class="form-control" placeholder="{{ user.name }}" value="{{ user.name }}"
-				aria-label="Name">
-		</div>
-
-		<div class="input-group mb-3">
-			<div class="input-group-prepend">
-				<span class="input-group-text" id="input-title">Email</span>
-			</div>
-			<input type="email" name="email" class="form-control" placeholder="{{ user.email }}"
-				value="{{ user.email }}" aria-label="Email">
-		</div>
-
-		<button type="submit" type="button" class="btn btn-primary float-right">Submit modifications</button>
-
-	</form>
-
-</main><!-- /.container -->
-
+        <button type="submit" type="button" class="btn btn-primary float-right">Submit modifications</button>
+    </form>
+</main>
 {% endblock %}

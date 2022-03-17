@@ -1,42 +1,37 @@
-{% extends "layout/base.html" %}
-
-{% block content %}
+{% extends "layout/base.html" %} {% block content %}
 <main role="main" class="container">
-	<div class="row">
-		<div class="col-12">
+    <div class="row">
+        <div class="col-12">
+            {% include "partials/modals/add-user.html" %}
 
-			{% include "partials/modals/add-user.html" %}
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-user-modal">
+                Add new user
+            </button>
 
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-user-modal">
-				Add new user
-			</button>
+            <hr />
 
-			<hr>
-
-			<div class="list-group">
-
-				{% for user in users %}
-				<div class="list-group-item list-group-item-action align-items-start list-group-item-flex">
-					<div class="list-group-item-tools">
-						<a href="/users/{{ user._id }}" title="Lock account"><i class="fas fa-eye"></i></a>
-						<a href="/users/{{ user._id }}/edit" title="Edit"><i class="fas fa-pencil-alt"></i></a>
-					</div>
-					<div class="list-group-item-image">
-						<svg width="80" height="80" data-jdenticon-value="{{ user._id }}"></svg>
-					</div>
-					<div class="list-group-item-content">
-						<div class="d-flex w-90 justify-content-between">
-							<h5 class="mb-1">{{ user.name }}</h5>
-							<small>Last login : 18 hours ago</small>
-						</div>
-						<p class="mb-1">{{ user.email }}</p>
-						<small>group-one, group-two</small>
-					</div>
-				</div>
-				{% endfor %}
-
-			</div>
-		</div>
-	</div>
-</main><!-- /.container -->
+            <div class="list-group">
+                {% for user in users %}
+                <div class="list-group-item list-group-item-action align-items-start list-group-item-flex">
+                    <div class="list-group-item-tools">
+                        <a href="/users/{{ user._id }}" title="Lock account"><i class="fas fa-eye"></i></a>
+                        <a href="/users/{{ user._id }}/edit" title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                    </div>
+                    <div class="list-group-item-image">
+                        <svg width="80" height="80" data-jdenticon-value="{{ user._id }}"></svg>
+                    </div>
+                    <div class="list-group-item-content">
+                        <div class="d-flex w-90 justify-content-between">
+                            <h5 class="mb-1">{{ user.name }}</h5>
+                            <small>Last login : 18 hours ago</small>
+                        </div>
+                        <p class="mb-1">{{ user.email }}</p>
+                        <small>group-one, group-two</small>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}

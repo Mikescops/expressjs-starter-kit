@@ -1,13 +1,9 @@
-{% extends "layout/base.html" %}
-
-{% block content %}
+{% extends "layout/base.html" %} {% block content %}
 
 <main role="main" class="container">
+    <h2>{{ title }}</h2>
 
-	<h2>{{ title }}</h2>
-
-	<p>{{ message }}</p>
-
-</main><!-- /.container -->
+    <p>{{ message }}</p>
+</main>
 
 {% endblock %}
