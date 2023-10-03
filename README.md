@@ -10,7 +10,6 @@ It uses MongoDB to store data as well as Nunjucks for templating.
 ```
 |-- app.js (main script to start the app)
 |-- package.json (metadata and dependencies)
-|-- gulpfile.js (specify files to watch)
 |-- models
 	|-- db.js (to connect to database)
 	|-- users.js (define users contenttype)
@@ -32,29 +31,23 @@ It uses MongoDB to store data as well as Nunjucks for templating.
 
 ## Installation
 
-You must have **nodejs and mongodb** installed on your system, verify with :
+You must have **NodeJS and MongoDB** installed on your system, verify with :
 
 `node --version && mongo --version`
 
+Alternatively, you can run MongoDB via a Docker image (much easier!), just run :
+
+`docker run --name mongo-express-project -p 27017:27017 -d mongo:latest`
+
 Go into root folder and enter the following line in your terminal :
 
-`npm ci` to install node dependencies.
+`npm ci` to install node dependencies (`ci` will follow the exact packages versions declared in `package-lock.json`).
 
 ## Launch project
 
-You can build assets with
-
-`npm run assets:build`
-
-then you may start the project with
+Start the project with :
 
 `npm run start`
-
-or use Gulp automation so that any modifications to files will minify assets and reload the app :
-
-`npm run assets:watch`
-
-Your project is accessible at [localhost:3000](http://localhost:3000).
 
 ## About design
 
@@ -65,7 +58,6 @@ The administrative panel template is from [Ad.min](https://github.com/Mikescops/
 -   ExpressJS : https://expressjs.com/en/starter/hello-world.html
 -   Mongoose (mongodb object modeling for nodejs) : https://mongoosejs.com/docs/
 -   Nunjucks (mozilla templating for nodejs) : https://mozilla.github.io/nunjucks/templating.html
--   GulpJS (development automation) : https://gulpjs.com/
 -   FontAwesome (icons font) : https://fontawesome.com/icons
 -   Kacole2's skeleton (inspiration of this project) : https://git.io/fxQXK
 

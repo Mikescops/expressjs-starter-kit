@@ -1,11 +1,15 @@
-const express = require('express'),
-    app = express(),
-    port = process.env.PORT || 3000,
-    path = require('path'),
-    logger = require('morgan'),
-    cookieParser = require('cookie-parser'),
-    bodyParser = require('body-parser'),
-    nunjucks = require('nunjucks');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const nunjucks = require('nunjucks');
+
+// we instantiate express
+const app = express();
+
+// we define a default port to 3000 or use the environment variable named PORT
+const port = process.env.PORT || 3000;
 
 // we use the morgan middleware to log the HTTP requests we receive
 app.use(logger('dev'));
@@ -14,7 +18,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json()); // parse application/json
 app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 
-// we use cookie-parser moddleware to be able to read and parse Cookies header (req.cookies)
+// we use cookie-parser middleware to be able to read and parse Cookies header (req.cookies)
 app.use(cookieParser());
 
 // Load templating and statics
@@ -28,11 +32,9 @@ nunjucks.configure('views', {
 app.set('view engine', 'html');
 
 // load DB connection
-const db = require('./models/db');
-// load user DB
-const users = require('./models/users');
+require('./models/db');
 
-// routes middleware
+// instruct express to use our routes middleware
 app.use(require('./routes'));
 
 // simple middleware to catch all non routed pages as 404 and forward to the error middleware
@@ -46,7 +48,7 @@ app.use((req, _res, next) => {
 /*** Error middlewares ***/
 
 // Development error middleware
-// will print stacktrace
+// will print the stacktrace while in development mode
 if (app.get('env') === 'development') {
     app.use((error, _req, res, _next) => {
         res.status(error.status || 500);
@@ -69,6 +71,7 @@ app.use((error, _req, res, _next) => {
     });
 });
 
+// we start our ExpressJS server
 app.listen(port, () => {
     console.log('Listening at address http://localhost:' + port);
 });

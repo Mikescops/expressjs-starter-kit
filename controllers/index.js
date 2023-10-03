@@ -1,11 +1,7 @@
-const mongoose = require('mongoose');
+const userModel = require('../models/users').userModel;
 
 const dashboard = (_req, res, next) => {
-	mongoose.model('Users').find({}, (error, users) => {
-		if (error) {
-			// transmit the error to the next middleware
-			return next(error);
-		}
+	userModel.find({}).then((users) => {
 		//respond to both HTML and JSON. JSON responses require 'Accept: application/json;' in the Request Header
 		res.format({
 			// HTML response will render the users/index.html
@@ -17,6 +13,9 @@ const dashboard = (_req, res, next) => {
 				res.json(users);
 			}
 		});
+	}).catch((error) => {
+		// transmit the error to the next middleware
+		return next(error);
 	});
 };
 

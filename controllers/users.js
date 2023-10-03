@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
+const userModel = require('../models/users').userModel;
 
 const indexUser = (_req, res, next) => {
 	// Retrieve all users from Mongo
-	mongoose.model('Users').find({}, (error, users) => {
-		if (error) {
-			return next(error);
-		}
+	userModel.find({}).then((users) => {
 		// respond to both HTML and JSON. JSON responses require 'Accept: application/json;' in the Request Header
 		res.format({
 			// HTML response will render the users/index.html
@@ -20,6 +18,9 @@ const indexUser = (_req, res, next) => {
 				res.json(users);
 			}
 		});
+	}).catch((error) => {
+		// transmit the error to the next middleware
+		return next(error);
 	});
 };
 
@@ -28,17 +29,13 @@ const storeUser = (req, res) => {
 	const { name, email } = req.body;
 
 	// call the create function for our database
-	mongoose.model('Users').create({
+	userModel.create({
 		_id: new mongoose.Types.ObjectId(),
 		name: name,
 		email: email,
-	}, (error, user) => {
-		if (error) {
-			// we can send custom error the next middleware
-			return next(new Error("There was a problem adding the information to the database: " + error));
-		}
+	}).then((user) => {
 		// user has been created
-		console.log('POST creating new user: ' + user);
+		console.log('POST created new user: ' + user);
 		res.format({
 			// HTML response will set the location and redirect back to the home page. You could also create a 'success' page if that's your thing
 			html: function () {
@@ -52,15 +49,15 @@ const storeUser = (req, res) => {
 				res.json(user);
 			}
 		});
+	}).catch((error) => {
+		// transmit a custom error to the next middleware
+		return next(new Error("There was a problem adding the information to the database: " + error));
 	});
 };
 
 const getUser = (req, res, next) => {
-	mongoose.model('Users').findById(req.params.id, (error, user) => {
-		if (error) {
-			return next(error);
-		}
-		console.log('GET Retrieving ID: ' + user._id);
+	userModel.findById(req.params.id).then((user) => {
+		console.log('GET Retrieved ID: ' + user._id);
 		res.format({
 			html: () => {
 				res.render('users/view', {
@@ -72,18 +69,18 @@ const getUser = (req, res, next) => {
 				res.json(user);
 			}
 		});
+	}).catch((error) => {
+		// transmit the error to the next middleware
+		return next(error);
 	});
 };
 
 const editUser = (req, res) => {
 	const id = req.params.id;
 	// Search for the user within Mongo
-	mongoose.model('Users').findById(id, (error, user) => {
-		if (error) {
-			return res.send('Error: There was a problem during editUser: ' + error);
-		}
+	userModel.findById(id).then((user) => {
 		// Return the user
-		console.log('GET Retrieving ID: ' + user._id);
+		console.log('GET Retrieved ID: ' + user._id);
 		res.format({
 			// HTML response will render the 'edit.jade' template
 			html: () => {
@@ -97,6 +94,9 @@ const editUser = (req, res) => {
 				res.json(user);
 			}
 		});
+	}).catch((error) => {
+		// transmit a custom error to the next middleware
+		return next(new Error('Error: There was a problem during editUser: ' + error));
 	});
 };
 
@@ -106,13 +106,7 @@ const updateUser = (req, res) => {
 	const { name, email } = req.body;
 
 	// find the document by ID
-	mongoose.model('Users').findByIdAndUpdate(id, {
-		name: name,
-		email: email,
-	}, (error, user) => {
-		if (error) {
-			return next(new Error("There was a problem updating the information to the database: " + error));
-		}
+	userModel.findByIdAndUpdate(id, { name, email }).then((user) => {
 		// HTML responds by going back to the page or you can be fancy and create a new view that shows a success page.
 		res.format({
 			html: () => {
@@ -123,25 +117,22 @@ const updateUser = (req, res) => {
 				res.json(user);
 			}
 		});
+	}).catch((error) => {
+		// transmit a custom error to the next middleware
+		return next(new Error("There was a problem updating the information to the database: " + error));
 	});
 };
 
 const deleteUser = (req, res, next) => {
 	// Find user to delete by ID
-	mongoose.model('Users').findById(req.params.id, (error, user) => {
-		if (error) {
-			return next(error);
-		}
+	userModel.findById(req.params.id).then((user) => {
 		if (!user) {
 			return next(new Error('No user to delete with the specified Id.'));
 		}
 		// remove it from Mongo
-		user.remove((error, user) => {
-			if (error) {
-				return next(error);
-			}
+		userModel.deleteOne(user).then((user) => {
 			// Returning success messages saying it was deleted
-			console.log('DELETE removing ID: ' + user._id);
+			console.log('DELETE removed ID: ' + user._id);
 			res.format({
 				// HTML returns us back to the main page, or you can create a success page
 				html: () => {
@@ -155,7 +146,13 @@ const deleteUser = (req, res, next) => {
 					});
 				}
 			});
+		}).catch((error) => {
+			// transmit the error to the next middleware
+			return next(error);
 		});
+	}).catch((error) => {
+		// transmit the error to the next middleware
+		return next(error);
 	});
 };
 

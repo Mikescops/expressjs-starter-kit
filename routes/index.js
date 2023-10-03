@@ -1,9 +1,9 @@
-const express = require('express'),
-	router = express.Router(),
-	indexController = require('../controllers');
+const express = require('express');
+const indexController = require('../controllers');
 
-router.route('/')
-	.get(indexController.dashboard);
+const router = express.Router();
+
+router.route('/').get(indexController.dashboard);
 
 router.use('/users', require('./users'));
 
