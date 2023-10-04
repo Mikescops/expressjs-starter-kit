@@ -24,7 +24,7 @@ const indexUser = (_req, res, next) => {
 	});
 };
 
-const storeUser = (req, res) => {
+const storeUser = (req, res, next) => {
 	// Get values from POST request. These can be done through forms or REST calls. These rely on the "name" attributes for forms
 	const { name, email } = req.body;
 
@@ -75,7 +75,7 @@ const getUser = (req, res, next) => {
 	});
 };
 
-const editUser = (req, res) => {
+const editUser = (req, res, next) => {
 	const id = req.params.id;
 	// Search for the user within Mongo
 	userModel.findById(id).then((user) => {
@@ -100,7 +100,7 @@ const editUser = (req, res) => {
 	});
 };
 
-const updateUser = (req, res) => {
+const updateUser = (req, res, next) => {
 	// Get our request and form values.
 	const id = req.params.id;
 	const { name, email } = req.body;

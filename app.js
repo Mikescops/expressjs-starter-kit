@@ -47,29 +47,42 @@ app.use((req, _res, next) => {
 
 /*** Error middlewares ***/
 
-// Development error middleware
-// will print the stacktrace while in development mode
+
 if (app.get('env') === 'development') {
+    // Development error middleware
+    // will print the stacktrace while in development mode
     app.use((error, _req, res, _next) => {
-        res.status(error.status || 500);
+        if (!error) {
+            error = new Error('Unknown error');
+            error.status = 500;
+        } else {
+            error.status = 400;
+        }
+        res.status(error.status);
         res.render('error', {
             title: 'Error ' + error.status,
             message: error.message,
-            error: error
+            stacktrace: error.stack
+        });
+    });
+} else {
+    // Production error middleware
+    // no stacktraces leaked to user
+    app.use((error, _req, res, _next) => {
+        if (!error) {
+            error = new Error('Unknown error');
+            error.status = 500;
+        } else {
+            error.status = 400;
+        }
+        res.status(error.status);
+        res.render('error', {
+            title: 'Error ' + error.status,
+            message: error.message,
+            stacktrace: null
         });
     });
 }
-
-// Production error middleware
-// no stacktraces leaked to user
-app.use((error, _req, res, _next) => {
-    res.status(error.status || 500);
-    res.render('error', {
-        title: 'Error ' + error.status,
-        message: error.message,
-        error: {}
-    });
-});
 
 // we start our ExpressJS server
 app.listen(port, () => {

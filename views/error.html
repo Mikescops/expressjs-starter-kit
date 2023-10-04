@@ -4,6 +4,13 @@
     <h2>{{ title }}</h2>
 
     <p>{{ message }}</p>
+
+    {% if stacktrace %}
+    <p>
+        <strong>Stacktrace:</strong>
+        <pre>{{ stacktrace }}</pre>
+    </p>
+    {% endif %}
 </main>
 
 {% endblock %}
