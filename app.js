@@ -47,7 +47,6 @@ app.use((req, _res, next) => {
 
 /*** Error middlewares ***/
 
-
 if (app.get('env') === 'development') {
     // Development error middleware
     // will print the stacktrace while in development mode
