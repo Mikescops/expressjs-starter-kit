@@ -49,6 +49,12 @@ Start the project with :
 
 `npm run start`
 
+## Launch project (docker version)
+
+If you want to launch the project inside a container with the associated Mongo database, you can run:
+
+`docker-compose up`
+
 ## About design
 
 The administrative panel template is from [Ad.min](https://github.com/Mikescops/ad.min) which is a minimal admin template.

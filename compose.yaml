@@ -1,0 +1,14 @@
+version: '2'
+services:
+    api:
+        build: .
+        ports:
+            - '3000:3000' # expose port 3000 to the host
+        environment:
+            - DATABASE_HOST=mongo # docker services are accessible by their name
+    mongo:
+        container_name: mongo
+        image: 'mongo:latest'
+        ports:
+            - '27017:27017' # expose port 27017 to the host so we can use a MongoDB GUI
+        attach: false
